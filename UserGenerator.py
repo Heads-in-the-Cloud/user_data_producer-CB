@@ -1,6 +1,8 @@
 import random
 from easy_password_generator import PassGen
 import json
+import requests
+
 
 # seed random for deterministic results
 random.seed(100)
@@ -101,4 +103,6 @@ for num in range(num_users):
     json_user = json.loads(user)
     print(json_user)
 
-    # create POST request
+# create POST request
+response = requests.post("http://127.0.0.1:8080/lms/user/", json=json_user)
+print(str(response))
